@@ -60,6 +60,7 @@ return [
             'config' => [
                 // The location storing the files:
                 'location' => directory('public').'img/',
+                //'public_url' => 'https://example.org/img/',
             ],
         ],
         
