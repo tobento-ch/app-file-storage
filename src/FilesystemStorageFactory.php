@@ -47,11 +47,18 @@ class FilesystemStorageFactory implements StorageFactoryInterface
             throw new StorageException('Config "location" is missing');
         }
         
+        $fsConfig = [];
+        
+        if (!empty($config['public_url'])) {
+            $fsConfig['public_url'] = $config['public_url'];
+        }
+        
         try {
             $filesystem = new \League\Flysystem\Filesystem(
                 adapter: new \League\Flysystem\Local\LocalFilesystemAdapter(
                     location: $config['location']
-                )
+                ),
+                config: $fsConfig,
             );
         } catch (\League\Flysystem\UnableToCreateDirectory $e) {
             throw new StorageException($e->getMessage(), $e->getCode(), $e);
