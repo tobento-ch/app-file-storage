@@ -72,6 +72,16 @@ return [
             ],
         ],
         
+        // you may remove it if you are not using the media picture feature
+        // see: https://github.com/tobento-ch/app-media#picture-feature
+        'picture-data' => [
+            'factory' => \Tobento\App\FileStorage\FilesystemStorageFactory::class,
+            'config' => [
+                // The location storing the files:
+                'location' => directory('app').'storage/picture-data/',
+            ],
+        ],
+        
         /*
         // example using closure:
         'file' => function(ContainerInterface $c): StorageInterface {
