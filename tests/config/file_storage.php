@@ -9,11 +9,12 @@
  * @link        https://www.tobento.ch
  */
 
-use Tobento\Service\FileStorage\StorageInterface;
-use Tobento\Service\FileStorage\Flysystem;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\StreamFactoryInterface;
+use Tobento\Service\FileStorage\Flysystem;
+use Tobento\Service\FileStorage\StorageInterface;
 use function Tobento\App\{directory};
+use function Tobento\App\Http\{assetUri, baseUri};
 
 return [
 
@@ -70,6 +71,17 @@ return [
             'config' => [
                 // The location storing the files:
                 'location' => directory('app').'storage/cache/',
+                'public_url' => (string)assetUri().'/img/',
+            ],
+        ],
+        
+        // you may remove it if you are not using the media picture feature
+        // see: https://github.com/tobento-ch/app-media#picture-feature
+        'picture-data' => [
+            'factory' => \Tobento\App\FileStorage\FilesystemStorageFactory::class,
+            'config' => [
+                // The location storing the files:
+                'location' => directory('app').'storage/picture-data/',
             ],
         ],
         
