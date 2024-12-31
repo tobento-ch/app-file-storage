@@ -9,9 +9,10 @@
  * @link        https://www.tobento.ch
  */
 
-use Tobento\Service\FileStorage\StorageInterface;
 use Psr\Container\ContainerInterface;
+use Tobento\Service\FileStorage\StorageInterface;
 use function Tobento\App\{directory};
+use function Tobento\App\Http\{assetUri, baseUri};
 
 return [
 
@@ -60,7 +61,7 @@ return [
             'config' => [
                 // The location storing the files:
                 'location' => directory('public').'img/',
-                //'public_url' => 'https://example.org/img/',
+                'public_url' => (string)assetUri().'/img/',
             ],
         ],
         
