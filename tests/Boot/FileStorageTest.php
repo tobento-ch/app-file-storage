@@ -73,6 +73,7 @@ class FileStorageTest extends TestCase
         $this->assertInstanceof(StorageInterface::class, $storages->default('uploads'));
         $this->assertInstanceof(StorageInterface::class, $storages->default('images'));
         $this->assertInstanceof(StorageInterface::class, $storages->default('cache'));
+        $this->assertTrue($storages->has('picture-data'));
     }
     
     public function testWithClosureConfigStorage()
