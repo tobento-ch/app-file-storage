@@ -1,6 +1,6 @@
 {
     "name": "tobento/app-file-storage",
-    "version": "2.0",
+    "version": "2.0.1",
     "type": "library",
     "description": "App file storage support.",
     "keywords": [
