@@ -53,6 +53,7 @@ return [
             'config' => [
                 // The location storing the files:
                 'location' => directory('app').'storage/uploads/',
+                'storage_type' => 'private',
             ],
         ],
         
@@ -62,6 +63,7 @@ return [
                 // The location storing the files:
                 'location' => directory('public').'img/',
                 'public_url' => (string)assetUri().'/img/',
+                'storage_type' => 'public',
             ],
         ],
         
@@ -70,6 +72,7 @@ return [
             'config' => [
                 // The location storing the files:
                 'location' => directory('app').'storage/cache/',
+                'storage_type' => 'private',
             ],
         ],
         
@@ -80,6 +83,7 @@ return [
             'config' => [
                 // The location storing the files:
                 'location' => directory('app').'storage/picture-data/',
+                'storage_type' => 'private',
             ],
         ],
         
