@@ -71,6 +71,7 @@ class FilesystemStorageFactory implements StorageFactoryInterface
                 flysystem: $filesystem,
                 streamFactory: $this->streamFactory,
             ),
+            type: $config['storage_type'] ?? 'private',
         );
     }
 }
