@@ -31,8 +31,8 @@ return [
     */
 
     'defaults' => [
-        'primary' => 'uploads',
-        'uploads' => 'uploads',
+        'primary' => 'uploads-private',
+        'uploads' => 'uploads-private',
         'images' => 'images',
         'cache' => 'cache',
     ],
@@ -47,16 +47,30 @@ return [
     */
     
     'storages' => [
-        
-        'uploads' => [
+        // Private upload storage (not publicly accessible).
+        // app-media: features are restricted by storage type; private files are never exposed.
+        // Keep in mind: store sensitive or non-public files here.
+        'uploads-private' => [
             'factory' => \Tobento\App\FileStorage\FilesystemStorageFactory::class,
             'config' => [
-                // The location storing the files:
-                'location' => directory('app').'storage/uploads/',
+                'location' => directory('app').'storage/uploads-private/',
                 'storage_type' => 'private',
             ],
         ],
-        
+
+        // Public upload storage (intended for end-user accessible files).
+        // app-media: features are restricted by storage type; exposure happens only via your route.
+        // Keep in mind: store files meant to be publicly accessible here.
+        'uploads-public' => [
+            'factory' => \Tobento\App\FileStorage\FilesystemStorageFactory::class,
+            'config' => [
+                'location' => directory('app').'storage/uploads-public/',
+                'storage_type' => 'public',
+            ],
+        ],
+
+        // Public image storage (web-accessible).
+        // Keep in mind: intended only for images generated or used by the app.
         'images' => [
             'factory' => \Tobento\App\FileStorage\FilesystemStorageFactory::class,
             'config' => [
